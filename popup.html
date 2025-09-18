@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SINPESCA</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <img src="icon.png" alt="SINPESCA" class="logo">
+                <div class="header-text">
+                    <h1 class="title">SINPESCA</h1>
+                    <p class="subtitle">Automatização Governamental</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- Login Múltiplo Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Login Múltiplo</h2>
+                    <p class="section-description">Execute múltiplos logins no PesqBrasil ou eSocial</p>
+                </div>
+                <div class="section-content">
+                    <div class="button-group">
+                        <button id="pesqBrasilBtn" class="btn-primary">
+                            <span class="btn-icon">🌐</span>
+                            <span class="btn-text">PesqBrasil</span>
+                        </button>
+                        <button id="esocialBtn" class="btn-primary">
+                            <span class="btn-icon">📋</span>
+                            <span class="btn-text">Esocial</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- eSocial Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">eSocial</h2>
+                    <p class="section-description">Configurações de automação para o eSocial</p>
+                </div>
+                <div class="section-content">
+                    
+                    <!-- Consultar Guias Pagas -->
+                    <div class="toggle-group">
+                        <div class="toggle-header">
+                            <label class="toggle-label" for="consultarGuiasToggle">
+                                <span class="toggle-text">Consultar Guias Pagas</span>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="consultarGuiasToggle" class="toggle-input">
+                                    <span class="toggle-slider"></span>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <!-- Dropdown de Anos (aparece quando toggle ativado) -->
+                        <div id="anoDropdownContainer" class="dropdown-container hidden">
+                            <label class="dropdown-label" for="anoSelect">Selecionar Ano:</label>
+                            <select id="anoSelect" class="dropdown-select">
+                                <option value="current">Ano Atual (Padrão)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Gerar GPS -->
+                    <div class="toggle-group">
+                        <div class="toggle-header">
+                            <label class="toggle-label" for="gerarGpsToggle">
+                                <span class="toggle-text">Gerar GPS</span>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="gerarGpsToggle" class="toggle-input">
+                                    <span class="toggle-slider"></span>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <!-- Controles de GPS (aparecem quando toggle ativado) -->
+                        <div id="gpsControlsContainer" class="gps-controls-container hidden">
+                            <div class="gps-controls">
+                                <div class="gps-control-group">
+                                    <label class="gps-label" for="mesSelect">Mês:</label>
+                                    <select id="mesSelect" class="gps-select">
+                                        <option value="01">Janeiro</option>
+                                        <option value="02">Fevereiro</option>
+                                        <option value="03">Março</option>
+                                        <option value="04">Abril</option>
+                                        <option value="05">Maio</option>
+                                        <option value="06">Junho</option>
+                                        <option value="07">Julho</option>
+                                        <option value="08">Agosto</option>
+                                        <option value="09">Setembro</option>
+                                        <option value="10">Outubro</option>
+                                        <option value="11">Novembro</option>
+                                        <option value="12">Dezembro</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="gps-control-group">
+                                    <label class="gps-label" for="valorInput">Valor (R$):</label>
+                                    <input type="text" id="valorInput" class="gps-input" placeholder="Ex: 1.400,00" maxlength="15">
+                                </div>
+                            </div>
+                            <p class="gps-note">Redireciona para GPS com competência específica</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- REAP Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">REAP</h2>
+                    <p class="section-description">Configurações para preenchimento automático do REAP</p>
+                </div>
+                <div class="section-content">
+                    
+
+                    <!-- Abas dos Anos -->
+                    <div class="reap-tabs-container">
+                        <div class="reap-tabs-header">
+                            <button class="reap-tab active" data-year="2021">2021</button>
+                            <button class="reap-tab" data-year="2022">2022</button>
+                            <button class="reap-tab" data-year="2023">2023</button>
+                            <button class="reap-tab" data-year="2024">2024</button>
+                        </div>
+                        
+                        <!-- Conteúdo das Abas -->
+                        <div class="reap-tab-content">
+                            <div class="reap-tab-panel active" id="panel-2021">
+                                <label class="reap-label" for="data2021">Dados para 2021:</label>
+                                <textarea id="data2021" class="reap-textarea" placeholder="Cole aqui os dados do Excel para 2021 (Quantidade e Preço separados por TAB e linha)"></textarea>
+                                <div class="reap-note">Formato: Quantidade[TAB]Preço (uma linha por espécie)</div>
+                            </div>
+                            
+                            <div class="reap-tab-panel" id="panel-2022">
+                                <label class="reap-label" for="data2022">Dados para 2022:</label>
+                                <textarea id="data2022" class="reap-textarea" placeholder="Cole aqui os dados do Excel para 2022 (Quantidade e Preço separados por TAB e linha)"></textarea>
+                                <div class="reap-note">Formato: Quantidade[TAB]Preço (uma linha por espécie)</div>
+                            </div>
+                            
+                            <div class="reap-tab-panel" id="panel-2023">
+                                <label class="reap-label" for="data2023">Dados para 2023:</label>
+                                <textarea id="data2023" class="reap-textarea" placeholder="Cole aqui os dados do Excel para 2023 (Quantidade e Preço separados por TAB e linha)"></textarea>
+                                <div class="reap-note">Formato: Quantidade[TAB]Preço (uma linha por espécie)</div>
+                            </div>
+                            
+                            <div class="reap-tab-panel" id="panel-2024">
+                                <label class="reap-label" for="data2024">Dados para 2024:</label>
+                                <textarea id="data2024" class="reap-textarea" placeholder="Cole aqui os dados do Excel para 2024 (Quantidade e Preço separados por TAB e linha)"></textarea>
+                                <div class="reap-note">Formato: Quantidade[TAB]Preço (uma linha por espécie)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p class="version">v1.0</p>
+                <div class="status" id="statusIndicator">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Pronto</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

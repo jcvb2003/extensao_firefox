@@ -1,0 +1,89 @@
+{
+  "manifest_version": 2,
+  "name": "SINPESCA",
+  "version": "1.4",
+  "description": "Abre abas em containeres e faz login no GOV.BR",
+  "permissions": [
+    "contextualIdentities",
+    "cookies",
+    "tabs",
+    "activeTab",
+    "scripting",
+    "storage",
+    "https://pesqbrasil-pescadorprofissional.agro.gov.br/*",
+    "https://sso.acesso.gov.br/*",
+    "https://login.esocial.gov.br/*",
+    "https://www.esocial.gov.br/*",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "web_accessible_resources": [
+    "prompt.html",
+    "prompt.js"
+  ],
+  "icons": {
+    "128": "icon.png"
+  },
+  "browser_action": {
+    "default_title": "SINPESCA",
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content-script.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.inss.gov.br/*"
+      ],
+      "js": [
+        "content-download.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "https://pesqbrasil-pescadorprofissional.agro.gov.br/*"
+      ],
+      "js": [
+        "content-download.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "*://pesqbrasil-pescadorprofissional.agro.gov.br/reap/*"
+      ],
+      "js": [
+        "content-reap.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "https://www.esocial.gov.br/portal/Home/Inicial?tipoEmpregador=EMPREGADOR_DOMESTICO",
+        "https://www.esocial.gov.br/portal/FolhaPagamento/Listagem/Competencias*",
+        "https://www.esocial.gov.br/portal/FolhaPagamento/Listagem/ListarPagamentos*"
+      ],
+      "js": [
+        "content-esocial.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{e9df396f-bdd8-4e79-bc7c-92017a928891}"
+    }
+  }
+}
