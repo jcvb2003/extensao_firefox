@@ -30,9 +30,9 @@
 
         // Configurações de delay
         DELAYS: {
-            CLICK: 400,
-            INPUT: 300,
-            NAVIGATION: 200
+            CLICK: 40,
+            INPUT: 40,
+            NAVIGATION: 40
         }
     };
 
