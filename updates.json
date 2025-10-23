@@ -1,10 +1,10 @@
 {
   "addons": {
-    "sinpesca@example.com": {
+    "{e9df396f-bdd8-4e79-bc7c-92017a928891}": {
       "updates": [
         {
-          "version": "1.4",
-          "update_link": "https://example.com/path/to/your/sinpesca-1.4.xpi"
+          "version": "2.0",
+          "update_link": "https://github.com/jcvb2003/extensao_firefox/releases/download/v2.0/extensao_firefox-2.0.xpi"
         }
       ]
     }
