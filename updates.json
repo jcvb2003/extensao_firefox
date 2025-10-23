@@ -1,0 +1,12 @@
+{
+  "addons": {
+    "sinpesca@example.com": {
+      "updates": [
+        {
+          "version": "1.4",
+          "update_link": "https://example.com/path/to/your/sinpesca-1.4.xpi"
+        }
+      ]
+    }
+  }
+}
